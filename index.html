@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صدقة جارية - فتحي محمد عباس</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Amiri', serif;
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* القسم الأول - الاسم والمصحف */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,50,0,0.6), rgba(0,30,0,0.8)), url('https://images.unsplash.com/photo-1609599006353-e629aaabfeae?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 40px;
+        }
+
+        .sadaqah-title {
+            font-family: 'Scheherazade New', serif;
+            font-size: 3.5rem;
+            color: #FFD700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            margin-bottom: 30px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .name-container {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(144,238,144,0.1));
+            border: 3px solid #FFD700;
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .name-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .deceased-name {
+            font-family: 'Scheherazade New', serif;
+            font-size: 4rem;
+            color: #90EE90;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .prayer-subtitle {
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            margin-top: 20px;
+        }
+
+        /* القسم الثاني - باقي المحتوى */
+        .main-content {
+            background: linear-gradient(180deg, #1a4d3a 0%, #0d2818 50%, #001a0d 100%);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #90EE90;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float-particle 8s infinite ease-in-out;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 10;
+            padding: 60px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* السبحة المتقدمة */
+        .tasbih-section {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border: 2px solid rgba(144,238,144,0.3);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .tasbih-title {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .tasbih-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .tasbih-counter {
+            background: linear-gradient(145deg, rgba(76,175,80,0.2), rgba(46,125,50,0.2));
+            border: 2px solid #4CAF50;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tasbih-counter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(76,175,80,0.4);
+        }
+
+        .tasbih-counter::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .tasbih-counter:active::before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .tasbih-name {
+            font-size: 1.4rem;
+            color: #90EE90;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .counter-display {
+            font-size: 3rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tasbih-text {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .reset-btn {
+            background: linear-gradient(145deg, #f44336, #d32f2f);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: linear-gradient(145deg, #d32f2f, #b71c1c);
+            transform: scale(1.05);
+        }
+
+        /* قسم المصحف */
+        .quran-section {
+            background: linear-gradient(145deg, rgba(139,69,19,0.2), rgba(101,67,33,0.2));
+            border: 2px solid rgba(205,133,63,0.5);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .quran-title {
+            font-size: 2.5rem;
+            color: #DEB887;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .quran-reader {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+            border: 1px solid rgba(222,184,135,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            min-height: 300px;
+        }
+
+        .surah-selector {
+            margin-bottom: 20px;
+        }
+
+        .surah-select {
+            background: rgba(0,0,0,0.3);
+            color: white;
+            border: 2px solid #DEB887;
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 1.1rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .verse-display {
+            font-size: 1.8rem;
+            line-height: 2.2;
+            color: #90EE90;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(144,238,144,0.05);
+            border-radius: 15px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* قسم الأدعية */
+        .prayers-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .prayer-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .prayer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .prayer-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            text-align: justify;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .quran-verse {
+            font-size: 1.4rem;
+            line-height: 2.1;
+            text-align: center;
+            color: #90EE90;
+            margin: 15px 0;
+            padding: 20px;
+            background: rgba(144,238,144,0.1);
+            border-radius: 15px;
+        }
+
+        /* التحكم في الصوت */
+        .audio-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(145deg, rgba(0,0,0,0.8), rgba(20,20,20,0.8));
+            border: 2px solid #4CAF50;
+            border-radius: 15px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .audio-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* الأنيميشن والتأثيرات */
+        @keyframes glow {
+            from { text-shadow: 3px 3px 6px rgba(255,215,0,0.5); }
+            to { text-shadow: 3px 3px 20px rgba(255,215,0,0.8), 0 0 30px rgba(255,215,0,0.4); }
+        }
+
+        @keyframes shine {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
+            33% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+            66% { transform: translateY(10px) translateX(-10px); opacity: 0.4; }
+        }
+
+        .sadaqah-animation {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 2rem;
+            color: rgba(144,238,144,0.6);
+            animation: float-sadaqah 4s ease-in-out infinite;
+        }
+
+        @keyframes float-sadaqah {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        /* تصميم الفوتر */
+        .footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(20,40,20,0.8));
+            border-top: 2px solid rgba(144,238,144,0.3);
+            backdrop-filter: blur(15px);
+        }
+
+        .footer-content {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .designer-credit {
+            font-size: 1.3rem;
+            color: #90EE90;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .designer-credit::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: underline-expand 3s ease-in-out infinite;
+        }
+
+        .design-icon {
+            color: #FFD700;
+            margin: 0 10px;
+            font-size: 1.1rem;
+            animation: pulse-icon 2s ease-in-out infinite;
+        }
+
+        @keyframes underline-expand {
+            0%, 100% { width: 0; opacity: 0; }
+            50% { width: 80%; opacity: 1; }
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .designer-credit:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        .designer-credit:hover .design-icon {
+            animation-duration: 0.5s;
+        }
+
+        /* استجابة للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .sadaqah-title { font-size: 2.5rem; }
+            .deceased-name { font-size: 2.8rem; }
+            .tasbih-grid { grid-template-columns: 1fr; }
+            .prayers-section { grid-template-columns: 1fr; }
+            .hero-content { padding: 20px; }
+            .designer-credit { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- التحكم في الصوت -->
+    <div class="audio-controls">
+        <button class="audio-btn" onclick="playAudio()">تشغيل الدعاء</button>
+        <button class="audio-btn" onclick="pauseAudio()">إيقاف</button>
+        <button class="audio-btn" onclick="toggleMute()" id="muteBtn">كتم الصوت</button>
+    </div>
+
+    <!-- مشغل الصوت -->
+    <audio id="duaaAudio" loop preload="auto">
+        <source src="doaa.mp3" type="audio/mpeg">
+        <source src="./doaa.mp3" type="audio/mpeg">
+        المتصفح لا يدعم تشغيل الصوت
+    </audio>
+
+    <!-- القسم الأول - الاسم والعنوان -->
+    <section class="hero-section">
+        <div class="floating-particles" id="heroParticles"></div>
+        <div class="sadaqah-animation">📿</div>
+        <div class="sadaqah-animation" style="top: 20%; left: 15%; animation-delay: 2s;">🤲</div>
+        <div class="sadaqah-animation" style="bottom: 30%; right: 20%; animation-delay: 1s;">☘️</div>
+        
+        <div class="hero-content">
+            <h1 class="sadaqah-title">صدقة جارية على روح المرحوم</h1>
+            <div class="name-container">
+                <div class="deceased-name">☘️ فتحي محمد عباس ☘️</div>
+                <p class="prayer-subtitle">🤍 رحمه الله وأسكنه فسيح جناته 🤍</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- القسم الرئيسي -->
+    <section class="main-content">
+        <div class="floating-particles" id="mainParticles"></div>
+        
+        <div class="content-container">
+            <!-- السبحة المتقدمة -->
+            <div class="tasbih-section">
+                <h2 class="tasbih-title">📿 السبحة الإلكترونية</h2>
+                
+                <div class="tasbih-grid">
+                    <div class="tasbih-counter" onclick="incrementCounter('subhan')">
+                        <div class="tasbih-name">سبحان الله</div>
+                        <div class="counter-display" id="subhanCount">0</div>
+                        <div class="tasbih-text">سبحان الله العظيم</div>
+                        <button class="reset-btn" onclick="resetCounter('subhan')">إعادة تعيين</button>
+                    </div>
+
+                    <div class="tasbih-counter" onclick="incrementCounter('hamd')">
+                        <div class="tasbih-name">الحمد لله</div>
+                        <div class="counter-display" id="hamdCount">0</div>
+                        <div class="tasbih-text">الحمد لله رب العالمين</div>
+                        <button class="reset-btn" onclick="resetCounter('hamd')">إعادة تعيين</button>
+                    </div>
+
+                    <div class="tasbih-counter" onclick="incrementCounter('takbir')">
+                        <div class="tasbih-name">الله أكبر</div>
+                        <div class="counter-display" id="takbirCount">0</div>
+                        <div class="tasbih-text">الله أكبر كبيراً</div>
+                        <button class="reset-btn" onclick="resetCounter('takbir')">إعادة تعيين</button>
+                    </div>
+
+                    <div class="tasbih-counter" onclick="incrementCounter('la_ilaha')">
+                        <div class="tasbih-name">لا إله إلا الله</div>
+                        <div class="counter-display" id="la_ilahaCount">0</div>
+                        <div class="tasbih-text">لا إله إلا الله وحده لا شريك له</div>
+                        <button class="reset-btn" onclick="resetCounter('la_ilaha')">إعادة تعيين</button>
+                    </div>
+
+                    <div class="tasbih-counter" onclick="incrementCounter('istighfar')">
+                        <div class="tasbih-name">أستغفر الله</div>
+                        <div class="counter-display" id="istighfarCount">0</div>
+                        <div class="tasbih-text">أستغفر الله العظيم</div>
+                        <button class="reset-btn" onclick="resetCounter('istighfar')">إعادة تعيين</button>
+                    </div>
+
+                    <div class="tasbih-counter" onclick="incrementCounter('salawat')">
+                        <div class="tasbih-name">الصلاة على النبي</div>
+                        <div class="counter-display" id="salawatCount">0</div>
+                        <div class="tasbih-text">اللهم صل وسلم على نبينا محمد</div>
+                        <button class="reset-btn" onclick="resetCounter('salawat')">إعادة تعيين</button>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="reset-btn" onclick="resetAllCounters()" style="font-size: 1.1rem; padding: 15px 30px; background: linear-gradient(145deg, #ff5722, #d84315);">إعادة تعيين الكل</button>
+                </div>
+            </div>
+
+            <!-- قسم المصحف -->
+            <div class="quran-section">
+                <h2 class="quran-title">📖 المصحف الشريف</h2>
+                <div class="quran-reader">
+                    <div class="surah-selector">
+                        <label for="surahSelect" style="color: #DEB887; font-size: 1.2rem; margin-left: 10px;">اختر السورة:</label>
+                        <select id="surahSelect" class="surah-select" onchange="loadSurah()" style="background-color: #083b08;">
+                              <option value="">اختر السورة</option>
+                            <option value="fatiha">الفاتحة</option>
+                            <option value="baqarah">البقرة (مختارات)</option>
+                            <option value="imran">آل عمران (مختارات)</option>
+                            <option value="kursi">آية الكرسي</option>
+                            <option value="ikhlas">الإخلاص</option>
+                            <option value="falaq">الفلق</option>
+                            <option value="nas">الناس</option>
+                            <option value="mulk">الملك (مختارات)</option>
+                            <option value="rahman">الرحمن (مختارات)</option>
+                            <option value="yasin">يس (مختارات)</option>
+                        </select>
+                        </select>
+                    </div>
+                    <div class="verse-display" id="verseDisplay">
+                        اختر سورة للقراءة من القائمة أعلاه
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button class="audio-btn" onclick="prevVerse()" id="prevBtn" disabled>الآية السابقة</button>
+                        <button class="audio-btn" onclick="nextVerse()" id="nextBtn" disabled>الآية التالية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم الأدعية -->
+            <div class="prayers-section">
+                <div class="prayer-card">
+                    <div class="card-title">📖 سورة الإخلاص</div>
+                    <div class="quran-verse">
+                        قُلْ هُوَ ٱللَّهُ أَحَدٌ ﴿1﴾<br>
+                        ٱللَّهُ ٱلصَّمَدُ ﴿2﴾<br>
+                        لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿3﴾<br>
+                        وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌ ﴿4﴾
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="card-title">📖 سورة الفلق</div>
+                    <div class="quran-verse">
+                        قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ ﴿1﴾<br>
+                        مِن شَرِّ مَا خَلَقَ ﴿2﴾<br>
+                        وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿3﴾<br>
+                        وَمِن شَرِّ ٱلنَّفَّـٰثَـٰتِ فِى ٱلْعُقَدِ ﴿4﴾<br>
+                        وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿5﴾
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="card-title">📖 سورة الناس</div>
+                    <div class="quran-verse">
+                        قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ ﴿1﴾<br>
+                        مَلِكِ ٱلنَّاسِ ﴿2﴾<br>
+                        إِلَـٰهِ ٱلنَّاسِ ﴿3﴾<br>
+                        مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ ﴿4﴾<br>
+                        ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ ﴿5﴾<br>
+                        مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ ﴿6﴾
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="card-title">🤲 دعاء للميت</div>
+                    <div class="prayer-text">
+                        اللهم آنسه في وحدته، وآنسه في وحشته، وآنسه في غربته، اللهم اجعل قبره نورًا، وافتح له بابًا إلى الجنة، وارزقه الجنة بلا حساب ولا سابقة عذاب. اللهم اغفر له وارحمه، وعافه واعفُ عنه، وأكرم نُزُله، ووسّع مدخله، واغسله بالماء والثلج والبرد، ونقّه من الخطايا كما ينقّى الثوب الأبيض من الدنس.
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="card-title">🤲 دعاء الرحمة</div>
+                    <div class="prayer-text">
+                        اللهم أبدله داراً خيراً من داره، وأهلاً خيراً من أهله، وزوجاً خيراً من زوجه، وأدخله الجنة، وأعذه من عذاب القبر ومن عذاب النار. اللهم عامله بما أنت أهله، ولا تعامله بما هو أهله. اللهم اجزه عن الإحسان إحساناً، وعن الإساءة عفواً وغفراناً.
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="card-title">🤲 دعاء خاص</div>
+                    <div class="prayer-text">
+                        اللهم تقبل وتجاوز، وبلغ ثواب هذا العمل إلى روح فتحي محمد عباس واجعلها صدقة جارية له إلى يوم الدين. اللهم اجعل كل من قرأ أو دعا له بهذا الأجر في ميزانه، واجعله نورًا له في قبره إلى يوم يبعثون. آمين يا رب العالمين.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الفوتر -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="designer-credit">
+                    <span class="design-icon">🎨</span>
+                             <a href="https://mahmoudhamadaa.github.io/profile/" style="color: #ffcb20; text-decoration: none;">© 2025 Mahmoud Hamada – Official Design</a>
+                    <span class="design-icon">✨</span>
+                </p>
+            </div>
+        </footer>
+    </section>
+
+    <script>
+        // متغيرات السبحة
+        const counters = {
+            subhan: 0,
+            hamd: 0,
+            takbir: 0,
+            la_ilaha: 0,
+            istighfar: 0,
+            salawat: 0
+        };
+
+        // بيانات المصحف
+        const quranData = {
+            fatiha: [
+                "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ ﴿1﴾",
+                "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ ﴿2﴾",
+                "ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ ﴿3﴾",
+                "مَـٰلِكِ يَوْمِ ٱلدِّينِ ﴿4﴾",
+                "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿5﴾",
+                "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ ﴿6﴾",
+                "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ ﴿7﴾"
+            ],
+            baqarah: [
+                "الٓمٓ ﴿1﴾",
+                "ذَٰلِكَ ٱلْكِتَـٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ﴿2﴾",
+                "ٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقْنَـٰهُمْ يُنفِقُونَ ﴿3﴾",
+                "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلْـَٔاخِرَةِ هُمْ يُوقِنُونَ ﴿4﴾",
+                "أُو۟لَـٰٓئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ ۖ وَأُو۟لَـٰٓئِكَ هُمُ ٱلْمُفْلِحُونَ ﴿5﴾",
+                  "إِنَّ ٱلَّذِينَ كَفَرُوا۟ سَوَآءٌ عَلَيْهِمۡ أَأَنذَرۡتَهُمۡ أَمۡ لَمۡ تُنذِرۡهُمۡ لَا يُؤْمِنُونَ ﴿6﴾",
+  "خَتَمَ ٱللَّهُ عَلَىٰ قُلُوبِهِمۡ وَعَلَىٰ سَمۢعِهِمۡ ۖ وَعَلَىٰٓ أَبۡصَٰرِهِمۡ غِشَٰوَةٌۭ ۖ وَلَهُمۡ عَذَابٌ عَظِيمٌۭ ﴿7﴾",
+  "وَمِنَ ٱلنَّاسِ مَن يَقُولُ ءَامَنَّا بِٱللَّهِ وَبِٱلۡيَوۡمِ ٱلۡـَٔاخِرِ وَمَا هُم بِمُؤۡمِنِينَ ﴿8﴾",
+  "يُخَٰدِعُونَ ٱللَّهَ وَٱلَّذِينَ ءَامَنُوا۟ وَمَا يَخۡدَعُونَ إِلَّآ أَنفُسَهُمۡ وَمَا يَشۡعُرُونَ ﴿9﴾",
+  "فِي قُلُوبِهِمۡ مَّرَضٞ فَزَادَهُمُ ٱللَّهُ مَرَضًا ۖ وَلَهُمۡ عَذَابٌ أَلِيمٌۢ بِمَا كَانُوا۟ يَكۡذِبُونَ ﴿10﴾",
+  "وَإِذَا قِيلَ لَهُمۡ لَا تُفۡسِدُوا۟ فِي ٱلۡأَرۡضِ قَالُوا إِنَّمَا نَحۡنُ مُصۡلِحُونَ ﴿11﴾",
+  "أَلَا إِنَّهُمۡ هُمُ ٱلۡمُفۡسِدُونَ وَلَٰكِن لَّا يَشۡعُرُونَ ﴿12﴾",
+  "وَإِذَا قِيلَ لَهُمۡ ءَامِنُوا۟ كَمَا ءَامَنَ ٱلنَّاسُ قَالُوا أَنُؤۡمِنُ كَمَا ءَامَنَ ٱلسُّفَهَاءُ ۗ أَلَا إِنَّهُمۡ هُمُ ٱلسُّفَهَاءُ وَلَٰكِن لَّا يَعۡلَمُونَ ﴿13﴾",
+  "وَإِذَا لَقُوا۟ ٱلَّذِينَ ءَامَنُوا۟ قَالُوا ءَامَنَّا وَإِذَا خَلَوۡا۟ إِلَىٰ شَيَٰطِينِهِمۡ قَالُوا إِنَّا مَعَكُمۡ إِنَّمَا نَحۡنُ مُسۡتَهۡزِئُونَ ﴿14﴾",
+  "ٱللَّهُ يَسۡتَهۡزِئُ بِهِمۡ وَيَمُدُّهُمۡ فِي طُغۡيَٰنِهِمۡ يَعۡمَهُونَ ﴿15﴾"
+            ],
+            imran: [
+                "الٓمٓ ﴿1﴾",
+                "ٱللَّهُ لَآ إِلَـٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ ﴿2﴾",
+                "نَزَّلَ عَلَيْكَ ٱلْكِتَـٰبَ بِٱلْحَقِّ مُصَدِّقًا لِّمَا بَيْنَ يَدَيْهِ وَأَنزَلَ ٱلتَّوْرَىٰةَ وَٱلْإِنجِيلَ ﴿3﴾",
+                "مِن قَبْلُ هُدًى لِّلنَّاسِ وَأَنزَلَ ٱلْفُرْقَانَ ۗ إِنَّ ٱلَّذِينَ كَفَرُو۟ا بِـَٔايَـٰتِ ٱللَّهِ لَهُمْ عَذَابٌ شَدِيدٌ ۗ وَٱللَّهُ عَزِيزٌ ذُو ٱنتِقَامٍ ﴿4﴾"
+            ],
+            kursi: [
+                "ٱللَّهُ لَآ إِلَـٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ ۚ لَا تَأْخُذُهُۥ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُۥ مَا فِى ٱلسَّمَـٰوَٰتِ وَمَا فِى ٱلْأَرْضِ ۗ مَن ذَا ٱلَّذِى يَشْفَعُ عِندَهُۥٓ إِلَّا بِإِذْنِهِۦ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَىْءٍ مِّنْ عِلْمِهِۦٓ إِلَّا بِمَا شَآءَ ۚ وَسِعَ كُرْسِيُّهُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضَ ۖ وَلَا يَـُٔودُهُۥ حِفْظُهُمَا ۚ وَهُوَ ٱلْعَلِىُّ ٱلْعَظِيمُ ﴿255﴾"
+            ],
+            ikhlas: [
+                "قُلْ هُوَ ٱللَّهُ أَحَدٌ ﴿1﴾",
+                "ٱللَّهُ ٱلصَّمَدُ ﴿2﴾",
+                "لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿3﴾",
+                "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌ ﴿4﴾"
+            ],
+            falaq: [
+                "قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ ﴿1﴾",
+                "مِن شَرِّ مَا خَلَقَ ﴿2﴾",
+                "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿3﴾",
+                "وَمِن شَرِّ ٱلنَّفَّـٰثَـٰتِ فِى ٱلْعُقَدِ ﴿4﴾",
+                "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿5﴾"
+            ],
+            nas: [
+                "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ ﴿1﴾",
+                "مَلِكِ ٱلنَّاسِ ﴿2﴾",
+                "إِلَـٰهِ ٱلنَّاسِ ﴿3﴾",
+                "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ ﴿4﴾",
+                "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ ﴿5﴾",
+                "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ ﴿6﴾"
+            ],
+            mulk: [
+                  "تَبَارَكَ ٱلَّذِي بِيَدِهِ ٱلْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَىْءٍ قَدِيرٌ ﴿1﴾",
+  "ٱلَّذِي خَلَقَ ٱلْمَوْتَ وَٱلْحَيَوٰةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا ۚ وَهُوَ ٱلْعَزِيزُ ٱلْغَفُورُ ﴿2﴾",
+  "ٱلَّذِي خَلَقَ سَبْعَ سَمَـٰوَٰتٍ طِبَاقًا ۖ مَا تَرَىٰ فِي خَلْقِ ٱلرَّحْمَـٰنِ مِن تَفَاوُتٍ ۖ فَٱرْجِعِ ٱلْبَصَرَ هَلْ تَرَىٰ مِن فُطُورٍ ﴿3﴾",
+  "ثُمَّ ٱرْجِعِ ٱلْبَصَرَ كَرَّتَيْنِ يَنقَلِبْ إِلَيْكَ ٱلْبَصَرُ خَاسِئًا وَهُوَ حَسِيرٌ ﴿4﴾",
+  "وَلَقَدْ زَيَّنَّا ٱلسَّمَاءَ ٱلدُّنْيَا بِمَصَابِيحَ وَجَعَلْنَٰهَا رُجُومًا لِّلشَّيَٰطِينِ ۖ وَأَعْتَدْنَا لَهُمۡ عَذَابَ ٱلسَّعِيرِ ﴿5﴾",
+  "وَلِلَّذِينَ كَفَرُوا بِرَبِّهِمۡ عَذَابُ جَهَنَّمَ ۖ وَبِئْسَ ٱلْمَصِيرُ ﴿6﴾",
+  "إِذَآ أُلْقُوا فِيهَا سَمِعُواْ لَهَا شَهِيقًا وَهِيَ تَفُورُ ﴿7﴾",
+  "تَكَادُ تَمَيَّزُ مِنَ ٱلْغَيْظِ ۖ كُلَّمَآ أُلْقِيَ فِيهَا فَوْجٌ سَأَلَهُمْ خَزَنَتُهَآ أَلَمْ يَأْتِكُمْ نَذِيرٌ ﴿8﴾",
+  "قَالُواٰ بَلَىٰ قَدْ جَآءَنَا نَذِيرٌ فَكَذَّبْنَا وَقُلْنَا مَا نَزَّلَ ٱللَّهُ مِن شَىْءٍ إِنْ أَنتُمْ إِلَّا فِي ضَلَٰلٍ كَبِيرٍ ﴿9﴾",
+  "وَقَالُوا لَوْ كُنَّا نَسْمَعُ أَوْ نَعْقِلُ مَا كُنَّا فِيٓ أَصْحَابِ ٱلسَّعِيرِ ﴿10﴾",
+  "فَٱعْتَرَفُواْ بِذَنْبِهِمْ فَسُحْقًا لِّأَصْحَابِ ٱلسَّعِيرِ ﴿11﴾",
+  "إِنَّ ٱلَّذِينَ يَخْشَوْنَ رَبَّهُم بِٱلْغَيْبِ لَهُم مَغْفِرَةٌ وَأَجْرٌ كَبِيرٌ ﴿12﴾",
+  "وَأَسِرُّوا۟ قَوْلَكُمْ أَوِ ٱجْهَرُوا۟ بِهِ ۖ إِنَّهُۥ عَلِيمٌ بِذَاتِ ٱلصُّدُورِ ﴿13﴾",
+  "أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ ٱللَّطِيفُ ٱلْخَبِيرُ ﴿14﴾",
+  "هُوَ ٱلَّذِي جَعَلَ لَكُمُ ٱلْأَرْضَ ذَلُولًا فَٱمْشُوا۟ فِي مَنَاكِبِهَا وَكُلُوا۟ مِن رِّزْقِهِ ۖ وَإِلَيْهِ ٱلنُّشُورُ ﴿15﴾",
+  "أَأَمِنتُم مَّن فِي ٱلسَّمَآءِ أَن يَخْسِفَ بِكُمُ ٱلْأَرْضَ فَإِذَا هِيَ تَمُورُ ﴿16﴾",
+  "أَمْ أَمِنتُم مَّن فِي ٱلسَّمَآءِ أَن يُرْسِلَ عَلَيْكُمْ حَاصِبًا ۖ فَسَتَعْلَمُونَ كَيْفَ نَذِيرِ ﴿17﴾",
+  "وَلَقَدْ كَذَّبَ ٱلَّذِينَ مِن قَبْلِهِم فَكَيْفَ كَانَ نَكِيرِ ﴿18﴾",
+  "أَوَلَمْ يَرَوْاْ إِلَى ٱلطَّيْرِ فَوْقَهُمْ صَافَّاتٍ وَيَقْبِضْنَ ۚ مَا يُمْسِكُهُنَّ إِلَّا ٱلرَّحْمَٰنُ ۚ إِنَّهُ بِكُلِّ شَىْءٍۭ بَصِيرٌ ﴿19﴾",
+  "أَمَّنْ هَٰذَا ٱلَّذِي هُوَ جُندٌ لَّكُمْ يَنصُرُكُم مِّن دُونِ ٱلرَّحْمَٰنِ ۚ إِنَّ ٱلْكَافرُونَ إِلَّا فِي غُرُورٍ ﴿20﴾",
+  "أَمَّنْ هَٰذَا ٱلَّذِي يَرْزُقُكُمْ إِنْ أَمْسَكَ رِزْقَهُۥ ۚ بَل لَّجُّوا۟ فِي عُتُوٍّ وَنُفُورٍ ﴿21﴾",
+  "أَفَمَن يَمْشِي مُكِبًّا عَلَىٰ وَجْهِهِۦٓ أَهْدَىٰٓ أَمَّن يَمْشِي سَوِيًّا عَلَىٰ صِرَٰطٍ مُّسْتَقِيمٍ ﴿22﴾",
+  "قُلْ هُوَ ٱلَّذِي أَنشَأَكُمْ وَجَعَلَ لَكُمُ ٱلسَّمْعَ وَٱلْأَبْصَٰرَ وَٱلْأَفْـِٔدَةَ ۖ قَلِيلًا مَّا تَشْكُرُونَ ﴿23﴾",
+  "قُلْ هُوَ ٱلَّذِي ذَرَأَكُمْ فِي ٱلْأَرْضِ وَإِلَيْهِ تُحْشَرُونَ ﴿24﴾",
+  "وَيَقُولُونَ مَتَىٰ هَٰذَا ٱلْوَعْدُ إِن كُنتُمْ صَٰدِقِينَ ﴿25﴾",
+  "قُلْ إِنَّمَا ٱلْعِلْمُ عِندَ ٱللَّهِ وَإِنَّمَا أَنَا۠ نَذِيرٌ مُّبِينٌ ﴿26﴾",
+  "فَلَمَّا رَأَوْهُ زُلْفَةًۭ سِيٓـَٔتْ وُجُوهُ ٱلَّذِينَ كَفَرُوا وَقِيلَ هَٰذَا ٱلَّذِي كُنتُم بِهِۦ تُدَّعُونَ ﴿27﴾",
+  "قُلْ أَرَأَيْتُمْ إِنْ أَهْلَكَنِيَ ٱللَّهُ وَمَن مَّعِيَ أَوْ رَحِمَنَا فَمَنْ يُجِيرُ ٱلْكَٰفِرِينَ مِنْ عَذَابٍ أَلِيمٍ ﴿28﴾",
+  "قُلْ هُوَ ٱلرَّحْمَٰنُ ءَامَنَّا بِهِۦ وَعَلَيْهِ تَوَكَّلْنَاۖ فَسَتَعْلَمُونَ مَنْ هُوَ فِي ضَلَالٍ مُّبِينٍ ﴿29﴾",
+  "قُلْ أَرَأَيْتُمْ إِنْ أَصْبَحَ مَاؤُكُمْ غَوْرًا فَمَنْ يَأْتِيكُمْ بِمَاءٍ مَّعِينٍ ﴿30﴾"
+            ],
+            rahman: [
+               "ٱلرَّحْمَـٰنُ ﴿1﴾",
+    "عَلَّمَ ٱلْقُرْءَانَ ﴿2﴾",
+    "خَلَقَ ٱلْإِنسَـٰنَ ﴿3﴾",
+    "عَلَّمَهُ ٱلْبَيَانَ ﴿4﴾",
+    "ٱلشَّمْسُ وَٱلْقَمَرُ بِحُسْبَانٍ ﴿5﴾",
+    "وَٱلنَّجْمُ وَٱلشَّجَرُ يَسْجُدَانِ ﴿6﴾",
+    "وَٱلسَّمَآءَ رَفَعَهَا وَوَضَعَ ٱلْمِيزَانَ ﴿7﴾",
+    "أَلَّا تَطْغَوْا۟ فِى ٱلْمِيزَانِ ﴿8﴾",
+    "وَأَقِيمُوا۟ ٱلْوَزْنَ بِٱلْقِسْطِ وَلَا تُخْسِرُوا۟ ٱلْمِيزَانَ ﴿9﴾",
+    "وَٱلْأَرْضَ وَضَعَهَا لِلْأَنَامِ ﴿10﴾",
+    "فِيهَا فَـٰكِهَةٌۭ وَٱلنَّخْلُ ذَاتُ ٱلْأَكْمَامِ ﴿11﴾",
+    "وَٱلْحَبُّ ذُو ٱلْعَصْفِ وَٱلرَّيْحَانُ ﴿12﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿13﴾",
+    "خَلَقَ ٱلْإِنسَـٰنَ مِن صَلْصَـٰلٍۢ كَٱلْفَخَّارِ ﴿14﴾",
+    "وَخَلَقَ ٱلْجَآنَّ مِن مَّارِجٍۢ مِّن نَّارٍۢ ﴿15﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿16﴾",
+    "رَبُّ ٱلْمَشْرِقَيْنِ وَرَبُّ ٱلْمَغْرِبَيْنِ ﴿17﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿18﴾",
+    "مَرَجَ ٱلْبَحْرَيْنِ يَلْتَقِيَانِ ﴿19﴾",
+    "بَيْنَهُمَا بَرْزَخٌۭ لَّا يَبْغِيَانِ ﴿20﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿21﴾",
+    "يَخْرُجُ مِنْهُمَا ٱللُّؤْلُؤُ وَٱلْمَرْجَانُ ﴿22﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿23﴾",
+    "وَلَهُ ٱلْجَوَارِ ٱلْمُنشَـَٔاتُ فِى ٱلْبَحْرِ كَٱلْأَعْلَـٰمِ ﴿24﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿25﴾",
+    "كُلُّ مَنْ عَلَيْهَا فَانٍۢ ﴿26﴾",
+    "وَيَبْقَىٰ وَجْهُ رَبِّكَ ذُو ٱلْجَلَـٰلِ وَٱلْإِكْرَامِ ﴿27﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿28﴾",
+    "يَسْـَٔلُهُۥ مَن فِى ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ ۚ كُلَّ يَوْمٍ هُوَ فِى شَأْنٍۢ ﴿29﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿30﴾",
+    "سَنَفْرُغُ لَكُمْ أَيُّهَا ٱلثَّقَلَانِ ﴿31﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿32﴾",
+    "يَـٰمَعْشَرَ ٱلْجِنِّ وَٱلْإِنسِ إِنِ ٱسْتَطَعْتُمْ أَن تَنفُذُوا۟ مِنْ أَقْطَارِ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ فَٱنفُذُوا۟ ۚ لَا تَنفُذُونَ إِلَّا بِسُلْطَـٰنٍۢ ﴿33﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿34﴾",
+    "يُرْسَلُ عَلَيْكُمَا شُوَاظٌۭ مِّن نَّارٍۢ وَنُحَاسٌۭ فَلَا تَنتَصِرَانِ ﴿35﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿36﴾",
+    "فَإِذَا ٱنشَقَّتِ ٱلسَّمَآءُ فَكَانَتْ وَرْدَةًۭ كَٱلدِّهَانِ ﴿37﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿38﴾",
+    "فَيَوْمَئِذٍۢ لَّا يُسْـَٔلُ عَن ذَنبِهِۦٓ إِنسٌۭ وَلَا جَآنٌۭ ﴿39﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿40﴾",
+    "يُعْرَفُ ٱلْمُجْرِمُونَ بِسِيمَـٰهُمْ فَيُؤْخَذُ بِٱلنَّوَٰصِى وَٱلْأَقْدَامِ ﴿41﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿42﴾",
+    "هَـٰذِهِۦ جَهَنَّمُ ٱلَّتِى يُكَذِّبُ بِهَا ٱلْمُجْرِمُونَ ﴿43﴾",
+    "يَطُوفُونَ بَيْنَهَا وَبَيْنَ حَمِيمٍ ءَانٍۢ ﴿44﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿45﴾",
+    "وَلِمَنْ خَافَ مَقَامَ رَبِّهِۦ جَنَّتَانِ ﴿46﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿47﴾",
+    "ذَوَاتَآ أَفْنَانٍۢ ﴿48﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿49﴾",
+    "فِيهِمَا عَيْنَانِ تَجْرِيَانِ ﴿50﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿51﴾",
+    "فِيهِمَا مِن كُلِّ فَـٰكِهَةٍۢ زَوْجَانِ ﴿52﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿53﴾",
+    "مُتَّكِـِٔينَ عَلَىٰ فُرُشٍۢ بَطَآئِنُهَا مِنْ إِسْتَبْرَقٍۢ ۚ وَجَنَى ٱلْجَنَّتَيْنِ دَانٍۢ ﴿54﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿55﴾",
+    "فِيهِنَّ قَـٰصِرَٰتُ ٱلطَّرْفِ لَمْ يَطْمِثْهُنَّ إِنسٌۭ قَبْلَهُمْ وَلَا جَآنٌۭ ﴿56﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿57﴾",
+    "كَأَنَّهُنَّ ٱلْيَاقُوتُ وَٱلْمَرْجَانُ ﴿58﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿59﴾",
+    "هَلْ جَزَآءُ ٱلْإِحْسَـٰنِ إِلَّا ٱلْإِحْسَـٰنُ ﴿60﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿61﴾",
+    "وَمِن دُونِهِمَا جَنَّتَانِ ﴿62﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿63﴾",
+    "مُدْهَآمَّتَانِ ﴿64﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿65﴾",
+    "فِيهِمَا عَيْنَانِ نَضَّاخَتَانِ ﴿66﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿67﴾",
+    "فِيهِمَا فَـٰكِهَةٌۭ وَنَخْلٌۭ وَرُمَّانٌۭ ﴿68﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿69﴾",
+    "فِيهِنَّ خَيْرَٰتٌ حِسَانٌۭ ﴿70﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿71﴾",
+    "حُورٌۭ مَّقْصُورَٰتٌۭ فِى ٱلْخِيَامِ ﴿72﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿73﴾",
+    "لَمْ يَطْمِثْهُنَّ إِنسٌۭ قَبْلَهُمْ وَلَا جَآنٌۭ ﴿74﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿75﴾",
+    "مُتَّكِـِٔينَ عَلَىٰ رَفْرَفٍ خُضْرٍۢ وَعَبْقَرِىٍّ حِسَانٍۢ ﴿76﴾",
+    "فَبِأَىِّ ءَالَآءِ رَبِّكُمَا تُكَذِّبَانِ ﴿77﴾",
+    "تَبَارَكَ ٱسْمُ رَبِّكَ ذِى ٱلْجَلَـٰلِ وَٱلْإِكْرَامِ ﴿78﴾"
+            ],
+            yasin: [
+                "يسٓ ﴿١﴾",
+                "وَٱلْقُرْءَانِ ٱلْحَكِيمِ ﴿٢﴾",
+                "إِنَّكَ لَمِنَ ٱلْمُرْسَلِينَ ﴿٣﴾",
+                "عَلَىٰ صِرَٰطٍ مُّسْتَقِيمٍ ﴿٤﴾",
+                "تَنزِيلَ ٱلْعَزِيزِ ٱلرَّحِيمِ ﴿٥﴾",
+  "لِتُنذِرَ قَوْمًا مَّا أُنذِرَ ءَابَاؤُهُمْ فَهُمْ غَٰفِلُونَ ﴿٦﴾",
+  "لَقَدْ حَقَّ ٱلْقَوْلُ عَلَىٰٓ أَكْثَرِهِمْ فَهُمْ لَا يُؤْمِنُونَ ﴿٧﴾",
+  "إِنَّا جَعَلْنَا فِيٓ أَعْنَـٰقِهِمْ أَغْلَـٰلًا فَهِيَ إِلَى ٱلْأَذْقَانِ فَهُمْ مُّقْمَحُونَ ﴿٨﴾",
+  "وَجَعَلْنَا مِن بَيْنِ أَيْدِيهِمْ سَدًّا وَمِنْ خَلْفِهِمْ سَدًّا فَأَغْشَيْنَاهُمْ فَهُمْ لَا يُبْصِرُونَ ﴿٩﴾",
+  "وَسَوَاءٌ عَلَيْهِمْ ءَأَنذَرْتَهُمْ أَمْ لَمْ تُنذِرْهُمْ لَا يُؤْمِنُونَ ﴿١٠﴾",
+  "إِنَّمَا تُنذِرُ مَنِ ٱتَّبَعَ ٱلذِّكْرَ وَخَشِيَ ٱلرَّحْمَٰنَ بِٱلْغَيۡبِ فَبَشِّرْهُ بِمَغۡفِرَةٖ وَأَجۡرٍ كَرِيمٍ ﴿١١﴾",
+  "إِنَّا نَحۡنُ نُحۡيِ ٱلۡمَوۡتَىٰ وَنَكۡتُبُ مَا قَدَّمُوا وَءَاثَٰرَهُمۡۚ وَكُلَّ شَيۡءٍ أَحۡصَيۡنَٰهُ فِيٓ إِمَامٖ مُّبِينٍ ﴿١٢﴾",
+  "وَٱضۡرِبۡ لَهُم مَّثَلًا أَصۡحَٰبَ ٱلۡقَرۡيَةِ إِذۡ جَآءَهَا ٱلۡمُرۡسَلُونَ ﴿١٣﴾",
+  "إِذۡ أَرۡسَلۡنَآ إِلَيۡهِمُ ٱثۡنَيۡنِ فَكَذَّبُوهُمَا فَعَزَّزۡنَا بِثَالِثٍ فَقَالُوٓاْ إِنَّآ إِلَيۡكُم مُّرۡسَلُونَ ﴿١٤﴾",
+  "قَالُواْ مَآ أَنتُمۡ إِلَّا بَشَرٌ مِّثۡلُنَا وَمَآ أَنزَلَ ٱلرَّحۡمَٰنُ مِن شَيۡءٍ إِنۡ أَنتُمۡ إِلَّا تَكۡذِبُونَ ﴿١٥﴾",
+  "قَالُواْ رَبُّنَا يَعۡلَمُ إِنَّآ إِلَيۡكُم مُّرۡسَلُونَ ﴿١٦﴾",
+  "وَمَا عَلَيۡنَآ إِلَّا ٱلۡبَلَٰغُ ٱلۡمُبِينُ ﴿١٧﴾",
+  "قَالُوٓاْ إِنَّا تَطَيَّرۡنَا بِكُمۡ لَئِن لَّمۡ تَنۡتَهُواْ لَنَرۡجُمَنَّكُمۡ وَلَيَمَسَّنَّكُم مِّنَّا عَذَابٌ أَلِيمٌ ﴿١٨﴾",
+  "قَالُواْ طَٰٓئِرُكُم مَّعَكُمۡ أَئِن ذُكِّرۡتُمۚ بَلۡ أَنتُمۡ قَوۡمٌ مُّسۡرِفُونَ ﴿١٩﴾",
+  "وَجَآءَ مِن أَقۡصَا ٱلۡمَدِينَةِ رَجُلٌ يَسۡعَىٰ قَالَ يَٰقَوۡمِ ٱتَّبِعُواْ ٱلۡمُرۡسَلِينَ ﴿٢٠﴾",
+  "ٱتَّبِعُواْ مَن لَّا يَسۡـَٔلُكُمۡ أَجۡرًا وَهُم مُّهۡتَدُونَ ﴿٢١﴾",
+  "وَمَا لِيَ لَآ أَعۡبُدُ ٱلَّذِي فَطَرَنِي وَإِلَيۡهِ تُرۡجَعُونَ ﴿٢٢﴾",
+  "ءَأَتَّخِذُ مِن دُونِهِۦٓ ءَالِهَةً إِن يُرِدۡنِ ٱلرَّحۡمَٰنُ بِضُرٍّ لَّا تُغۡنِ عَنِّي شَفَٰعَتُهُمۡ شَيۡـًٔا وَلَا يُنقِذُونِ ﴿٢٣﴾",
+  "إِنِّيٓ إِذٗا لَّفِي ضَلَٰلٖ مُّبِينٍ ﴿٢٤﴾",
+  "إِنِّيٓ ءَامَنتُ بِرَبِّكُمۡ فَٱسۡمَعُونِ ﴿٢٥﴾",
+  "قِيلَ ٱدۡخُلِ ٱلۡجَنَّةَۖ قَالَ يَٰلَيۡتَ قَوۡمِي يَعۡلَمُونَ ﴿٢٦﴾",
+  "بِمَا غَفَرَ لِي رَبِّي وَجَعَلَنِي مِنَ ٱلۡمُكۡرَمِينَ ﴿٢٧﴾",
+  "وَمَآ أَنزَلۡنَا عَلَىٰ قَوۡمِهِۦ مِنۢ بَعۡدِهِۦ مِن جُندٍ مِّنَ ٱلسَّمَآءِ وَمَا كُنَّا مُنزِلِينَ ﴿٢٨﴾",
+  "إِن كَانَتۡ إِلَّا صَيۡحَةً وَٰحِدَةً فَإِذَا هُمۡ خَٰمِدُونَ ﴿٢٩﴾",
+  "يَٰحَسْرَةً عَلَى ٱلْعِبَادِۚ مَا يَأۡتِيهِم مِّن رَّسُولٍ إِلَّا كَانُواْ بِهِۦ يَسْتَهۡزِئُونَ ﴿٣٠﴾",
+  "أَلَمۡ يَرَوْا كَمۡ أَهۡلَكۃنَا قَبۡلَهُم مِّنَ ٱلۡقُرُونِ أَنَّهُمۡ إِلَيْهِمۡ لَا يَرۡجِعُونَ ﴿٣١﴾",
+  "وَإِن كُلٌّ لَّمَّا جَمِيعٌ لَّدَيْنَا مُحۡضَرُونَ ﴿٣٢﴾",
+  "وَءَايَةٌ لَّهُمُ ٱلْأَرْضُ ٱلْمَيۡتَةُ أَحۡيَيۡنٰهَا وَأَخۡرَجۡنَا مِنۡهَا حَبًّا فَمِنْهُ يَأۡكُلُونَ ﴿٣٣﴾",
+  "وَجَعَلۡنَا فِيهَا جَنَّاتٍ مِّن نَّخِيلٍ وَأَعۡنَٰبٍ وَفَجَّرۡنَا فِيهَا مِنَ ٱلْعُيُونِ ﴿٣٤﴾",
+  "لِيَأۡكُلُواْ مِن ثَمَٰرِهِۦ وَمَا عَمِلَتْهُ أَيْدِيهِمۡۚ أَفَلَا يَشْكُرُونَ ﴿٣٥﴾",
+  "سُبْحَٰنَ ٱلَّذِي خَلَقَ ٱلْأَزْوَٰجَ كُلَّهَا مِمَّا تُنۢبِتُ ٱلْأَرْضُ وَمِمَّا أَنفُسِهِمۡ وَمِمَّا لَا يَعۡلَمُونَ ﴿٣٦﴾",
+  "وَءَايَةٌ لَّهُمُ ٱلَّيْلُ نَسْلَخُ مِنْهُ ٱلنَّهَارَ فَإِذَا هُم مُّظْلِمُونَ ﴿٣٧﴾",
+  "وَٱلشَّمْسُ تَجْرِي لِمُسْتَقَرٍّ لَّهَاۚ ذَٰلِكَ تَقْدِيرُ ٱلْعَزِيزِ ٱلْعَلِيمِ ﴿٣٨﴾",
+  "وَٱلْقَمَرَ قَدَّرْنَٰهُ مَنَازِلَ حَتّىٰ عَادَ كَٱلْعُرْجُونِ ٱلْقَدِيمِ ﴿٣٩﴾",
+  "لَا ٱلشَّمْسُ يَن٢بَغِي لَهَآ أَن تُدْرِكَ ٱلْقَمَرَ وَلَا ٱلَّيْلُ سَابِقُ ٱلنَّهَارِۚ وَكُلٌّ فِي فَلَكٍ يَسْبَحُونَ ﴿٤٠﴾",
+  "وَءَايَةٌ لَّهُم أَنَّا حَمَلْنَا ذُرِّيَّتَهُم فِي ٱلْفُلْكِ ٱلْمَشْحُونِ ﴿٤١﴾",
+  "وَخَلَقْنَا لَهُم مِّن مِّثْلِهِۦ مَا يَرْكَبُونَ ﴿٤٢﴾",
+  "وَإِن نَّشَأْ نُغْرِقْهُم فَلَا صَرِيخَ لَهُمْ وَلَا هُم يُنقَذُونَ ﴿٤٣﴾",
+  "إِلَّا رَحْمَةً مِّنَّا وَمَتَاعًا إِلَىٰ حِينٍ ﴿٤٤﴾",
+  "وَإِذَا قِيلَ لَهُمُ ٱتَّقُواْ مَا بَيْنَ أَيْدِيكُمْ وَمَا خَلْفَكُمْ لَعَلَّكُمْ تُرْحَمُونَ ﴿٤٥﴾",
+  "وَمَا تَأْتِيهِم مِّنْ ءَايَةٍ مِنْ ءَايَٰتِ رَبِّهِمْ إِلَّا كَانُواْ عَنْهَا مُعْرِضِينَ ﴿٤٦﴾",
+  "وَإِذَا قِيلَ لَهُمُ أَنفِقُواْ مِمَّا رَزَقَكُمُ ٱللَّهُ قَالَ ٱلَّذِينَ كَفَرُواْ لِلَّذِينَ ءَامَنُواْ أَنُطْعِمُ مَن لَّوْ يَشَاءُ ٱللَّهُ أَطْعَمَهُۥٓ إِنْ أَنتُمْ إِلَّا فِي ضَلَٰلٍ مُّبِينٍ ﴿٤٧﴾",
+  "وَيَقُولُونَ مَتَىٰ هَٰذَا ٱلْوَعْدُ إِن كُنتُمۡ صَٰدِقِينَ ﴿٤٨﴾",
+  "مَا يَنظُرُونَ إِلَّا صَيحَةً وَٰحِدَةً تَأْخُذُهُمْ وَهُمۡ يَخِصِّمُونَ ﴿٤٩﴾",
+  "فَلَا يَسْتَطِيعُونَ تَوْصِيَةً وَلَآ إِلَىٰٓ أَهْلِهِمۡ يَرْجِعُونَ ﴿٥٠﴾",
+  "وَنُفِخَ فِي ٱلصُّورِ فَإِذَا هُم مِّنَ ٱلْأَجْدَاثِ إِلَىٰ رَبِّهِمۡ يَنسِلُونَ ﴿٥١﴾",
+  "قَالُواْ يَٰوَيْلَنَا مَنْ بَعَثَنَا مِن مَّرْقَدِنَاۜ هَٰذَا مَا وَعَدَ ٱلرَّحْمَٰنُ وَصَدَقَ ٱلْمُرْسَلُونَ ﴿٥٢﴾",
+  "إِن كَانَتۡ إِلَّا صَيحَةً وَٰحِدَةً فَإِذَا هُم جَمِيعٌ لَّدَيْنَا مُحْضَرُونَ ﴿٥٣﴾",
+  "فَٱلْيَوْمَ لَا تُظْلَمُ نَفْسٌ شَيْئًا وَلَا تُجْزَوْنَ إِلَّا مَا كُنتُمْ تَعْמَلُونَ ﴿٥٤﴾",
+  "إِنَّ أَصْحَٰبَ ٱلْجَنَّةِ الْيَوْمَ فِي شُغُلٍ فَاكِهُونَ ﴿٥٥﴾",
+  "هُمْ وَأَزْوَٰجُهُمْ فِي ظِلَالٍ عَلَى ٱلْأَرَائِكِ مُّتَّكِئُونَ ﴿٥٦﴾",
+  "لَهُمْ فِيهَا فَاكِهَةٌ وَلَهُمْ مَّا يَدَّعُونَ ﴿٥٧﴾",
+  "سَلَٰمٌ قَوْلًا مِّن رَّبٍّ رَّحِيمٍ ﴿٥٨﴾",
+  "وَٱمْتَٰزُواْ الْيَوْمَ أَيُّهَا ٱلْمُجْرِمُونَ ﴿٥٩﴾",
+  "أَلَمْ أَعْهَدْ إِلَيْكُمْ يَٰبَنِيٓ ءَادَمَ أَن لَّا تَعْبُدُواْ ٱلشَّيْطَٰنَ إِنَّهُۥ لَكُمْ عَدُوٌّ مُّبِينٌ ﴿٦٠﴾",
+  "وَأَنِ ٱعْبُدُونِي هَٰذَٰ صِرَٰطٌ مُّسْتَقِيمٌ ﴿٦١﴾",
+  "وَلَقَدْ أَضَلَّ مِنكُم جِبِلًّا كَثِيرًا أَفَلَمْ تَكُونُواْ تَعْقِلُونَ ﴿٦٢﴾",
+  "هَٰذِهِ جَهَنَمُ الَّتِي كُنْتُمْ تُوعَدُونَ ﴿٦٣﴾",
+  "ٱصْلَوْهَا الْيَوْمَ بِمَا كُنتُمْ تُكَذِّبُونَ ﴿٦٤﴾",
+  "ٱلْيَوْمَ نَخْتِمُ عَلَىٰٓ أَفْوَٰهِهِمۡ وَتُكَلِّمُنَآ أَيْدِيهِمۡ وَتَشْهَدُ أَرْجُلُهُم بِمَا كَانُواْ يَكْسِبُونَ ﴿٦٥﴾",
+  "وَلَوْ نَشَاءُ لَطَمَسْنَا عَلَىٰٓ أَعْيُنِهِمْ فَٱسْتَبَقُواْ الصِّرَٰطَ فَأَنَّىٰ يُبْصِرُونَ ﴿٦٦﴾",
+  "وَلَوْ نَشَاءُ لَمَسَخْنَٰهُم عَلَىٰ مَكَانَتِهِمْ فَمَا ٱسْتَطَاعُواْ مُضِيًّا وَلَا يَرْجِعُونَ ﴿٦٧﴾",
+  "وَمَنْ نُعَمِّرْهُ نُنَكِّسْهُ فِي الْخَلْقِۖ أَفَلَا يَعْقِلُونَ ﴿٦٨﴾",
+  "وَمَا عَلَّمْنَٰهُ الشِّعْرَ وَمَا يَنۢبَغِي لَهُۥۚ إِنْ هُوَ إِلَّا ذِكْرٌ وَقُرْءَانٌ مُّبِينٌ ﴿٦٩﴾",
+  "لِّيُنذِرَ مَنْ كَانَ حَيًّا وَيَحِقَّ الْقَوْلُ عَلَى الْكَٰفِرِينَ ﴿٧٠﴾",
+  "أَوَلَمْ يَرَوْا أَنَّا خَلَقْنَا لَهُمْ مِّمَّا عَمِلَتْ أَيْدِينَا أَنْعَامًا فَهُمْ لَهَا مَالِكُونَ ﴿٧١﴾",
+  "وَذَلَّلْنَٰهَا لَهُمْ فَمِنْهَا رَكُوبُهُمْ وَمِنْهَا يَأْكُلُونَ ﴿٧٢﴾",
+  "وَلَهُمْ فِيهَا مَنَافِعُ وَمَشَارِبُۖ أَفَلَا يَشْكُرُونَ ﴿٧٣﴾",
+  "وَاتَّخَذُوا مِنْ دُونِ اللَّهِ آلِهَةً لَعَلَّهُمْ يُنصَرُونَ ﴿٧٤﴾",
+  "لَا يَسْتَطِيعُونَ نَصْرَهُمْ وَهُمْ لَهُمْ جُنْدٌ مُّحْضَرُونَ ﴿٧٥﴾",
+  "فَلَا يَحْزُنكَ قَوْلُهُمْۘ إِنَّا نَعْلَمُ مَا يُسِرُّونَ وَمَا يُعْلِنُونَ ﴿٧٦﴾",
+  "أَوَلَمْ يَرَ الْإِنسَٰنُ أَنَّا خَلَقْنَاهُ مِن نُّطْفَةٍ فَإِذَا هُوَ خَصِيمٌ مُّبِينٌ ﴿٧٧﴾",
+  "وَضَرَبَ لَنَا مَثَلًا وَنَسِيَ خَلْقَهُۥۖ قَالَ مَنْ يُحْيِي الْعِظَامَ وَهِيَ رَمِيمٌ ﴿٧٨﴾",
+  "قُلْ يُحْيِيهَا الَّذِي أَنشَأَهَا أَوَّلَ مَرَّةٍۖ وَهُوَ بِكُلِّ خَلْقٍ عَلِيمٌ ﴿٧٩﴾",
+  "الَّذِي جَعَلَ لَكُمْ مِنَ الشَّجَرِ الْأَخْضَرِ نَارًا فَإِذَا أَنتُمْ مِنْهُ تُوقِدُونَ ﴿٨٠﴾",
+  "أَوَلَيْسَ الَّذِي خَلَقَ السَّمَاوَاتِ وَالأَرْضَ بِقَادِرٍ عَلَىٰ أَن يَفْخَلَقَ مِثْلَهُمۚ بَلَىٰ وَهُوَ الْخَلَّاقُ الْعَلِيمُ ﴿٨١﴾",
+  "إِنَّمَا أَمْرُهُۥ إِذَا أَرَادَ شَيْئًا أَن يَقُولَ لَهُۥ كُن فَيَكُونُ ﴿٨٢﴾",
+  "فَسُبْحَٰنَ الَّذِي بِيَدِهِ مَلَكُوتُ كُلِّ شَيْءٍ وَإِلَيْهِ تُرْجَعُونَ ﴿٨٣﴾"
+
+            ]
+        };
+
+        let currentSurah = '';
+        let currentVerse = 0;
+        let isMuted = false;
+
+        // وظائف السبحة
+        function incrementCounter(type) {
+            counters[type]++;
+            document.getElementById(type + 'Count').textContent = counters[type];
+            
+            // تأثير بصري
+            const element = document.getElementById(type + 'Count');
+            element.style.transform = 'scale(1.3)';
+            element.style.color = '#fff';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+                element.style.color = '#FFD700';
+            }, 200);
+
+            // حفظ في التخزين المحلي
+            localStorage.setItem('tasbih_' + type, counters[type]);
+
+            // تشغيل صوت النقر (اختياري)
+            playClickSound();
+        }
+
+        function resetCounter(type) {
+            counters[type] = 0;
+            document.getElementById(type + 'Count').textContent = 0;
+            localStorage.removeItem('tasbih_' + type);
+        }
+
+        function resetAllCounters() {
+            if (confirm('هل تريد حقاً إعادة تعيين جميع العدادات؟')) {
+                for (let type in counters) {
+                    resetCounter(type);
+                }
+            }
+        }
+
+        // وظائف المصحف
+        function loadSurah() {
+            const select = document.getElementById('surahSelect');
+            currentSurah = select.value;
+            currentVerse = 0;
+
+            if (currentSurah && quranData[currentSurah]) {
+                displayVerse();
+                document.getElementById('prevBtn').disabled = true;
+                document.getElementById('nextBtn').disabled = quranData[currentSurah].length <= 1;
+            } else {
+                document.getElementById('verseDisplay').textContent = 'اختر سورة للقراءة من القائمة أعلاه';
+                document.getElementById('prevBtn').disabled = true;
+                document.getElementById('nextBtn').disabled = true;
+            }
+        }
+
+        function displayVerse() {
+            if (currentSurah && quranData[currentSurah]) {
+                const verses = quranData[currentSurah];
+                document.getElementById('verseDisplay').textContent = verses[currentVerse];
+                
+                // تحديث أزرار التنقل
+                document.getElementById('prevBtn').disabled = currentVerse === 0;
+                document.getElementById('nextBtn').disabled = currentVerse === verses.length - 1;
+            }
+        }
+
+        function prevVerse() {
+            if (currentVerse > 0) {
+                currentVerse--;
+                displayVerse();
+            }
+        }
+
+        function nextVerse() {
+            if (currentSurah && quranData[currentSurah] && currentVerse < quranData[currentSurah].length - 1) {
+                currentVerse++;
+                displayVerse();
+            }
+        }
+
+        // وظائف الصوت
+        function playAudio() {
+            const audio = document.getElementById('duaaAudio');
+            audio.play().catch(e => {
+                console.log('خطأ في تشغيل الصوت:', e);
+               
+            });
+        }
+
+        function pauseAudio() {
+            const audio = document.getElementById('duaaAudio');
+            audio.pause();
+        }
+
+        function toggleMute() {
+            const audio = document.getElementById('duaaAudio');
+            const btn = document.getElementById('muteBtn');
+            
+            if (isMuted) {
+                audio.muted = false;
+                btn.textContent = 'كتم الصوت';
+                isMuted = false;
+            } else {
+                audio.muted = true;
+                btn.textContent = 'إلغاء الكتم';
+                isMuted = true;
+            }
+        }
+
+        function playClickSound() {
+            // يمكن إضافة صوت نقر هنا إذا رغبت
+        }
+
+        // إنشاء الجسيمات المتحركة
+        function createParticles(containerId, count) {
+            const container = document.getElementById(containerId);
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // تحميل البيانات المحفوظة
+        function loadSavedCounters() {
+            for (let type in counters) {
+                const saved = localStorage.getItem('tasbih_' + type);
+                if (saved) {
+                    counters[type] = parseInt(saved);
+                    document.getElementById(type + 'Count').textContent = counters[type];
+                }
+            }
+        }
+
+        // إعداد الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء الجسيمات
+            createParticles('heroParticles', 20);
+            createParticles('mainParticles', 30);
+            
+            // تحميل العدادات المحفوظة
+            loadSavedCounters();
+            
+            // تشغيل الصوت تلقائياً (اختياري)
+            setTimeout(() => {
+                playAudio();
+            }, 2000);
+
+            // تأثيرات الظهور التدريجي للبطاقات
+            const cards = document.querySelectorAll('.prayer-card, .tasbih-counter');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200 + 1000);
+            });
+        });
+
+        // منع النقر بالزر الأيمن على الصوت
+        document.getElementById('duaaAudio').addEventListener('contextmenu', e => e.preventDefault());
+
+        // التحكم في مستوى الصوت
+        document.addEventListener('keydown', function(e) {
+            const audio = document.getElementById('duaaAudio');
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                audio.volume = Math.min(1, audio.volume + 0.1);
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                audio.volume = Math.max(0, audio.volume - 0.1);
+            }
+        });
+    </script>
+</body>
+</html>
